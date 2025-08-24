@@ -127,29 +127,30 @@ Lógica de Programação e Algoritmos – resolução de problemas computacionai
 
     </section>
 
-    <script>
-// Função chamada ao enviar o formulário
-        function enviarwhats(event)  {  
-            event.preventdefault()  // Impede que a página seja recarregada ao enviar
-             // Pega os valores do input pelo ID
-      const nome = document.getELementById('nome').value;
-      const mensagem = document.getELementById('mensagem').value;
-       const telefone = 5511953449542  // número de telefone fixo
+  
+<script>
+  const form = document.getElementById('whatsappForm');
 
-       // Cria o texto da mensagem usando template string
-       const text = `ola! me chamo ${nome}, ${mensagem}`
-        // Formata a mensagem para URL
-       const msgformatada = encodeURIComponent(texto);
+  form.addEventListener('submit', function(e) {
+    e.preventDefault(); // Evita que a página recarregue
 
-         // Cria a URL para abrir no WhatsApp
-       const url = `https://wa.me/${telefone}/?=${msgformatada}`;
-       
-       // Abre a URL em uma nova aba
-       whindow.open(url, '_blank');
+    // Captura os valores dos inputs
+    const nome = document.getElementById('nome').value;
+    const mensagem = document.getElementById('mensagem').value;
 
-        }
+    // Número do WhatsApp (adicione seu código de país, ex: 55 para Brasil)
+    const telefone = '5599999999999'; // Substitua pelo seu número real
 
-    </script>
+    // Monta a URL do WhatsApp corretamente
+    const url = `https://wa.me/${telefone}?text=Olá! Meu nome é ${encodeURIComponent(nome)}. ${encodeURIComponent(mensagem)}`;
+
+    // Abre o WhatsApp em nova aba
+    window.open(url, '_blank');
+
+    // Limpa os campos do formulário
+    form.reset();
+  });
+</script>
 
 
 
@@ -158,4 +159,5 @@ Lógica de Programação e Algoritmos – resolução de problemas computacionai
 </body>
 
 </html>
+
 
